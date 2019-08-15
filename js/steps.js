@@ -1,4 +1,5 @@
-console.log('TO AQUI POHA!');
+//Testing js...
+console.log('Ok');
 
 // Form steps
 $(document).ready(function () {
