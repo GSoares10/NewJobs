@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Import Free Font Awesome Icons-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+        integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+    <!--Import my Styles.css-->
+    <link rel="stylesheet" href="css/register.css">
+    <title>Register Page</title>
+</head>
+
+<body>
+    <!-- navbar -->
+    <div class="header">
+        <nav class="nav-wrapper transparent">
+            <div class="container">
+                <a href="index.html" class="brand-logo center">Logo</a>
+                <a href="" class="sidenav-trigger" data-target="mobile-menu">
+                    <i class="material-icons">menu</i>
+                </a>
+                <ul class="sidenav grey lighten-2" id="mobile-menu">
+                    <li><a href="index.html">Home Page</a></li>
+                </ul>
+            </div>
+        </nav>
+        <div class="row register">
+            <div class="col s12 l4 offset-l4">
+                <div class="card">
+                    <div class="card-action center transparent text-darken-4">
+                        <div class="steps">
+                            <a href="#step-1" type="button" class="btn btn-primary indigo">1</a>
+                        </div>
+                        <div class="steps">
+                            <a href="#step-2" type="button" class="btn btn-default indigo" disabled="disabled">2</a>
+                        </div>
+                        <div class="steps">
+                            <a href="#step-3" type="button" class="btn btn-default indigo" disabled="disabled">3</a>
+                        </div>
+                        <h2>Register</h2>
+                    </div>
+                    <div class="card-content" id="step-1">
+                        <h3>Dados</h3>
+                        <div class="input-field">
+                            <i class="material-icons prefix">email</i>
+                            <input id="email" type="email" class="validate" required="required">
+                            <label for="email">Email</label>
+                            <span class="helper-text" data-error="wrong" data-success="right"></span>
+                        </div>
+                        <div class="input-field">
+                            <i class="material-icons prefix">vpn_key</i>
+                            <input type="password" id="password" required="required">
+                            <label for="password">Password</label>
+                        </div>
+                        <button class="btn btn-primary nextBtn waves-effect waves-light btn-large z-depth-5 indigo"
+                            type="button">Next</button>
+                    </div>
+                    <div class="card-content" id="step-2">
+                        <h3>Dados1</h3>
+                        <div class="input-field">
+                            <i class="material-icons prefix">email</i>
+                            <input id="email" type="email" class="validate" required="required">
+                            <label for="email">Email</label>
+                            <span class="helper-text" data-error="wrong" data-success="right"></span>
+                        </div>
+                        <div class="input-field">
+                            <i class="material-icons prefix">vpn_key</i>
+                            <input type="password" id="password" required="required">
+                            <label for="password">Password</label>
+                        </div>
+                        <button class="btn btn-primary prevBtn waves-effect waves-light btn-large z-depth-5 indigo"
+                            type="button">Previous</button>
+                        <button
+                            class="btn btn-primary nextBtn waves-effect waves-light btn-large z-depth-5 right indigo"
+                            type="button">Next</button>
+                    </div>
+                    <div class="card-content" id="step-3">
+                        <h3>Dados2</h3>
+                        <button class="btn btn-primary prevBtn waves-effect waves-light btn-large z-depth-5 indigo"
+                            type="button">Previous</button>
+                        <button
+                            class="btn btn-success waves-effect waves-light btn-large z-depth-5 right indigo">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    </div>
+
+    <footer class="page-footer grey darken-4">
+        <div class="footer-copyright grey darken-4">
+            <div class="container center-align">&copy; 2019 G.S</div>
+        </div>
+    </footer>
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <!-- My Scripts-->
+    <script src="js/main.js"></script>
+    <script src="js/steps.js"></script>
+
+</body>
+
+</html>

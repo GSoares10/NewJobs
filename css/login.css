@@ -1,0 +1,32 @@
+.header {
+    background: url("https://iso.500px.com/wp-content/uploads/2016/03/pedroquintela.jpg");
+    background-size: cover;
+    background-position: center;
+    min-height: 900px;
+}
+
+@media screen and (max-width: 670px) {
+    .header {
+        min-height: 600px;
+    }
+}
+
+.login {
+    padding-top: 10vw;
+}
+
+.login .card {
+    background: whitesmoke;
+}
+
+.login label {
+    font-size: 16px;
+}
+
+.login-btn {
+    margin: 10px;
+}
+.register-link {
+    font-size: 12px;
+    color: red;
+}
