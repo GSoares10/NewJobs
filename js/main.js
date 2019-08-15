@@ -30,6 +30,3 @@ $(function () {
       return false;
     });
   });
-
-  // Form steps
- 
