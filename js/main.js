@@ -1,17 +1,5 @@
 // Testing JavaScript if is calling in the page.
 console.log("OK!");
-// JQuery
-$(document).ready(function() {
-    $('.sidenav').sidenav();
-    $('.materialboxed').materialbox();
-    $('.parallax').parallax();
-    $('.tabs').tabs();
-    $('.datepicker').datepicker( {
-        disableWeekends: true
-    });
-    $('.tooltipped').tooltip();
-    $('.scrollspy').scrollSpy();
-});
 
 $(function () {
     let topBtn = $('.c-page-top');
@@ -30,3 +18,24 @@ $(function () {
       return false;
     });
   });
+
+// Checkbox 
+
+$(function () {
+  $('input.checktype').click(function () {
+    if ($(this).is(":checked")) {
+      $('input.checktype').attr('disabled', true);
+      $(this).removeAttr('disabled');
+    } else {
+      $('input.checktype').removeAttr('disabled');
+    }
+  })
+})
+
+
+//  Maxlength Telefone
+$(document).ready(function() {
+  $("#telefone").keyup(function() {
+      $("#telefone").val(this.value.match(/[0-9]*/));
+  });
+});

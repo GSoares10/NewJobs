@@ -1,0 +1,85 @@
+body, html {
+    min-height: 1000px;
+}
+header, main {
+    padding-left: 300px;
+}
+.pesquisa {
+    margin: 5px auto;
+}
+.modal-content div>a {
+    color: black;
+}
+.modal-content div>a>i {
+    margin: 0px 15px 0px 0px; 
+}
+.modal-trigger {
+    color: black;
+}
+.input-field > *{
+    color: #000;
+}
+.col.s4.l2 > img {
+    height: 80px;
+    width: 80px;
+}
+.nav-wrapper {
+    position: fixed;
+}
+.modal-trigger {
+    margin: 10px 10px 10px 10px;
+}
+#user-img {
+    border-radius: 50%;
+    height: 80px;
+    width: 80px;
+}
+.img-adc {
+    padding: 15px 15px 15px 15px;
+    height: 500px;
+    width: 500px;
+}
+.btns-user {
+    padding: 15px 15px 15px 15px;
+}
+.pesquisa-css {
+    padding: 15px;
+}
+.dropdown-trigger {
+    margin: 20px;
+}
+#user-back {
+    padding: 15px;
+    height: 250px;
+    width: 100%;
+}
+.background {
+  position: relative;
+}
+.user-photo {
+  position: relative;
+  margin-top: -110px;
+  margin-left: 30px;
+}
+.user-content {
+    margin-top: 15px;
+    padding: 10px;
+}
+.user-register-emp {
+    padding: 15px;
+}
+#btn-icon-emp {
+    padding-top: 5px;
+}
+#user-name {
+    padding-top: 10px;
+}
+@media screen and (max-width: 600px) {
+    header, main {
+        padding-left: 0px;
+    }
+    .col.s4.l2 > img {
+        height: 64px;
+        width: 64px;
+    }
+}

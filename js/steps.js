@@ -36,7 +36,7 @@ $(document).ready(function () {
       let curStep = $(this).closest(".card-content"),
         curStepBtn = curStep.attr("id"),
         nextStepWizard = $('div.card div a[href="#' + curStepBtn + '"]').parent().next().children("a"),
-        curInputs = curStep.find("input[type='email'],input[type='password']"),
+        curInputs = curStep.find("input[type='text'], select[type='text'] ,input[type='date'], input[type='checkbox'], input[type='email'],input[type='password'], textarea[id='textarea']"),
         isValid = true;
   
       $(".input-field").removeClass("has-error");
