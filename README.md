@@ -1,5 +1,5 @@
 # NewJobs
-Project involving the Software Engineering and Database disciplines.
+# Projeto envolvendo as disciplinas: Engenharia de Software e Banco de Dados. 
+# IFRS - Campus Rio Grane
 --
-
-A simple platform that will serve to promote internships and jobs in new / small businesses.
+Um simples sistema que irá servir para promover estágios e oferta de trabalhos em novas/pequenas empresas.
