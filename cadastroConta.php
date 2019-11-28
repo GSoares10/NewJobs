@@ -41,16 +41,17 @@
             <div class="col s12 l4 offset-l4">
                     <div class="card">
                         <div class="card-action center transparent text-darken-4">
+                        <h2>Cadastro</h2>
                             <div class="steps">
-                                <a href="#step-1" class="btn btn-primary indigo">1</a>
+                                <a href="#step-1" class="orange darken-2 btn btn-primary indigo">1</a>
                             </div>
                             <div class="steps">
-                                <a href="#step-2" class="btn btn-default indigo" disabled="disabled">2</a>
+                                <button href="#step-2" class="orange darken-2 btn btn-default indigo" disabled="disabled">2</a>
                             </div>
                             <div class="steps">
-                                <a href="#step-3" class="btn btn-default indigo" disabled="disabled">3</a>
+                                <a href="#step-3" class="orange darken-2 btn btn-default indigo" disabled="disabled">3</a>
                             </div>
-                            <h2>Cadastro</h2>
+                            
                         </div>
                         <form action="cadastrarConta.php" method="POST">
                             <div class="card-content" id="step-1">
@@ -98,7 +99,7 @@
                                     </p>
                                 </div>
                                 <button
-                                    class="btn btn-primary nextBtn waves-effect waves-light btn-large z-depth-5 right indigo"
+                                    class="orange darken-2 btn btn-primary nextBtn waves-effect waves-light btn-large z-depth-5 right indigo"
                                     type="button">Próximo</button>
                             </div>
                             <div class="card-content" id="step-2">
@@ -114,9 +115,9 @@
                                     <input type="password" id="senha" name="senha" required="required">
                                     <label for="senha">Senha</label>
                                 </div>
-                                <button class="btn btn-primary prevBtn waves-effect waves-light btn-large z-depth-5 indigo"
+                                <button class="orange darken-2 btn btn-primary prevBtn waves-effect waves-light btn-large z-depth-5 indigo"
                                     type="button">Voltar</button>
-                                <button class="btn btn-primary nextBtn waves-effect waves-light btn-large z-depth-5 indigo"
+                                <button class="orange darken-2 btn btn-primary nextBtn waves-effect waves-light btn-large z-depth-5 indigo"
                                     type="button">Próximo</button>
                             </div>
                             <div class="card-content" id="step-3">
@@ -143,15 +144,14 @@
                                 </div>
                                 <label>Currículo</label>
                                 <div class="file-field">
-                                    <a class="btn"><i class="material-icons">attachment</i></a>
+                                    <button class="btn"><i class="material-icons">attachment</i></button>
                                     <div class="file-path-wrapper">
                                         <input type="text" id="curriculo" name="curriculo" class="file-path validate">
                                     </div>
                                 </div>
-                                <button class="btn btn-primary prevBtn waves-effect waves-light btn-large z-depth-5 indigo"
-                                    type="button">Voltar</button>
+                                <button class="orange darken-2 btn btn-primary prevBtn waves-effect waves-light btn-large z-depth-5 indigo">Voltar</button>
                                 <button
-                                    class="btn btn-primary nextBtn waves-effect waves-light btn-large z-depth-5 right indigo" type="submit">Enviar</button>
+                                    class="orange darken-2 btn btn-primary nextBtn waves-effect waves-light btn-large z-depth-5 right indigo">Enviar</button>
                             </div>
                         </form>
                     </div>

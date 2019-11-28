@@ -18,6 +18,7 @@
       if($res) {
         while($linha = $stm->fetch(PDO::FETCH_ASSOC)) {
           $conta = new Conta($linha['nome'], $linha['sexo'], new DateTime($linha['dataNascimento']), $linha['telefone'], $linha['tipo'], $linha['email'], $linha['senha'], $linha['fotoCapa'], $linha['foto'], $linha['descricao'], $linha['curriculo']);
+          $conta->setCodConta(intval($linha['codConta']));
           array_push($listConta, $conta);
         }
       }
@@ -29,13 +30,14 @@
     //BUSCA
     public function buscarConta($codConta) {
       $con = $this->getConexao();
-      $sql = 'SELECT * FROM "Conta" WHERE codConta = ?';
+      $sql = 'SELECT * FROM "Conta" WHERE "codConta" = ?';
       $stm = $con->prepare($sql);
       $stm->bindValue(1, $codConta);
       $res = $stm->execute();
       if($res) {
         $linha = $stm->fetch(PDO::FETCH_ASSOC);
         $conta = new Conta($linha['nome'], $linha['sexo'], new DateTime($linha['dataNascimento']), $linha['telefone'], $linha['tipo'], $linha['email'], $linha['senha'], $linha['fotoCapa'], $linha['foto'], $linha['descricao'], $linha['curriculo']);
+        $conta->setCodConta(intval($linha['codConta']));
       }else{
         $conta = $res;
         echo $stm->queryString;
@@ -78,7 +80,7 @@
     //EXCLUI
     public function excluirConta($codConta) {
       $con = $this->getConexao();
-      $sql = 'DELETE FROM "Conta" WHERE codConta = ?';
+      $sql = 'DELETE FROM "Conta" WHERE "codConta" = ?';
       $stm = $con->prepare($sql);
       $stm->bindValue(1, $codConta);
       $res = $stm->execute();
@@ -110,19 +112,28 @@
       $con = NULL;
       return $res;
     }
-    //ALTERA DESCRICAO
-    public function alterarDescricao($conta) {
+    //LISTA AVANÇADA
+    public function listarAvancado($tipo, $limit, $offset) {
       $con = $this->getConexao();
-      $sql = 'UPDATE "Conta" SET "descricao = ?"';
+      $sql = 'SELECT * FROM "Conta" WHERE "tipo" = ? LIMIT ? OFFSET ?';
       $stm = $con->prepare($sql);
-      $stm->bindValue(1, $conta->getDescricao());
+      $stm->bindValue(1, $tipo);
+      $stm->bindValue(2, $limit);
+      $stm->bindValue(3, $offset);
       $res = $stm->execute();
-      if(!$res) {
-        echo $stm->queryString;
-        var_dump($stm->errorInfo());
+      $listAvancada = array();
+      if($res) {
+        while($linha = $stm->fetch(PDO::FETCH_ASSOC)) {
+          $conta = new Conta($linha['nome'], $linha['sexo'], new DateTime($linha['dataNascimento']), $linha['telefone'], $linha['tipo'], $linha['email'], $linha['senha'], $linha['fotoCapa'], $linha['foto'], $linha['descricao'], $linha['curriculo']);
+          $conta->setCodConta(intval($linha['codConta']));
+          array_push($listAvancada, $conta);
+        }
       }
       $stm->closeCursor();
-      
+      $stm = NULL;
+      $con = NULL;
+      return $listAvancada;
     }
   }
 ?>
+

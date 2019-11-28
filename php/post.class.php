@@ -2,13 +2,13 @@
   class Post {
     private $codPost;
     private $conta;
-    private $arquivo;
     private $descricao;
+    private $arquivo;
     //CONSTRUCTOR
-    public function __construct($conta, $arquivo, $descricao) {
+    public function __construct($conta,$descricao, $arquivo) {
       $this->conta = $conta;
-      $this->arquivo = $arquivo;
       $this->descricao = $descricao;
+      $this->arquivo = $arquivo;
     }
     //GETTERS
     public function getCodPost() {
@@ -17,11 +17,11 @@
     public function getConta() {
       return $this->conta;
     }
-    public function getArquivo() {
-      return $this->arquivo;
-    }
     public function getDescricao() {
       return $this->descricao;
+    }
+    public function getArquivo() {
+      return $this->arquivo;
     }
     //SETTERS
     public function setCodPost($codPost) {
@@ -30,11 +30,11 @@
     public function setConta($conta) {
       $this->conta = $conta;
     }
-    public function setArquivo($arquivo) {
-      $this->arquivo = $arquivo;
-    }
     public function setDescricao($descricao) {
       $this->descricao = $descricao;
+    }
+    public function setArquivo($arquivo) {
+      $this->arquivo = $arquivo;
     }
   }
 ?>

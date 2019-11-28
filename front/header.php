@@ -1,3 +1,15 @@
+<?php
+    require_once('php/conta.class.php');
+    require_once('php/contaDAO.php');
+    require_once('php/post.class.php');
+    require_once('php/postDAO.php');
+
+    $contaDAO = new ContaDAO();
+    $codConta = 1;
+    $conta = $contaDAO->buscarConta($codConta);
+?>
+
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -24,14 +36,24 @@
             <li>
                 <div class="user-view">
                     <div class="background">
-                        <img class="responsive-img" src="media/cityscape.jpg">
+                        <img class="responsive-img" src="media/parallax.jpg">
                     </div>
-                    <img class="circle responsive-img" src="media/portrait.jpg">
+                    <?php 
+                        if($conta->getSexo() == 'Masculino') {
+                    ?>
+                    <img class="circle responsive-img" src="media/person.png">
+                    <?php
+                        }else if($conta->getSexo() == 'Feminino') {
+                    ?>
+                    <img class="circle responsive-img" src="media/person2.png">
+                    <?php
+                        }
+                    ?>
                     <a href="perfil.php">
-                        <span class="white-text name">User Tester</span>
+                        <span class="white-text name"><?php echo $conta->getNome();?></span>
                     </a>
                     <a href="#email">
-                        <span class="white-text name">user@example.com</span>
+                        <span class="white-text name"><?php echo $conta->getEmail();?></span>
                     </a>
                 </div>
             </li>
@@ -48,7 +70,7 @@
                 </a>
             </li>
             <li>
-                <a href="login.html">
+                <a href="login.php">
                     <i class="material-icons sair">arrow_forward</i>
                     <span class="text sair">Sair</span>
                 </a>
@@ -58,14 +80,24 @@
             <li>
                 <div class="user-view">
                     <div class="background">
-                        <img class="responsive-img" src="media/cityscape.jpg">
+                        <img class="responsive-img" src="media/parallax.jpg">
                     </div>
-                    <img class="circle responsive-img" src="media/portrait.jpg">
+                    <?php 
+                        if($conta->getSexo() == 'Masculino') {
+                    ?>
+                    <img class="circle responsive-img" src="media/person.png">
+                    <?php
+                        }else if($conta->getSexo() == 'Feminino') {
+                    ?>
+                    <img class="circle responsive-img" src="media/person2.png">
+                    <?php
+                        }
+                    ?>
                     <a href="perfil.php">
-                        <span class="white-text name">User Tester</span>
+                        <span class="white-text name"><?php echo $conta->getNome();?></span>
                     </a>
                     <a href="#email">
-                        <span class="white-text name">user@example.com</span>
+                        <span class="white-text name"><?php echo $conta->getEmail();?></span>
                     </a>
                 </div>
             </li>
@@ -90,7 +122,7 @@
         </ul>
     </header>
     <main>
-        <nav class="nav-warraper">
+        <nav class="nav-warraper orange darken-2">
             <a href="principal.php" class="center brand-logo">Logo</a>
             <a href="#menu" class="sidenav-trigger" data-target="mobile-menu">
                 <i class="material-icons">menu</i>

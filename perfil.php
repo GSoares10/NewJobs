@@ -4,17 +4,27 @@
 
 
 <div class="container">
-  <div class="card grey lighten-4 z-depth-1">
+  <div class="card grey lighten-5 z-depth-1">
     <div class="row">
       <div class="col s12">
         <div class="user-view">
           <div class="background">
-            <img class="responsive-img" id="user-back" src="media/cityscape.jpg">
+            <img class="responsive-img" id="user-back" src="media/parallax.jpg">
           </div>
           <div class="user-photo">
-            <img class="circle responsive-img" id="user-img" src="media/portrait.jpg">
+            <?php 
+              if($conta->getSexo() == 'Masculino') {
+            ?>
+            <img class="circle responsive-img" id="user-img"  src="media/person.png">
+            <?php
+              }else if($conta->getSexo() == 'Feminino') {
+            ?>
+            <img class="circle responsive-img" id="user-img"  src="media/person2.png">
+            <?php
+              }
+            ?>
             <a href="#use">
-              <span class="white-text">User Tester</span>
+              <span class="white-text"><?php echo $conta->getNome();?></span>
             </a>
           </div>
           
@@ -28,7 +38,13 @@
                   <i class="material-icons">edit</i>
                 </a>
                 <span>
-                  Lorem, ipsum dolor sit amet consectetur adipisicing elit. At, quos doloribus. Nulla et iure natus cumque autem nesciunt perspiciatis maiores repudiandae facilis, assumenda saepe ex cum fuga esse voluptatem aliquid!.
+                  <?php 
+                  if($conta->getDescricao() == null) {
+                    echo "Adicione uma descrição para conhecerem você melhor!";
+                  }else{
+                    echo $conta->getDescricao();
+                  }
+                  ?>
                 </span>
               </div>
             </li>
@@ -38,9 +54,21 @@
                 <a href="#edit_perfil-descricao" class="right"> 
                   <i class="material-icons">edit</i>
                 </a>
-                <span>Lorem ipsum dolor sit amet.</span>
+                <span>
+                <?php 
+                  if($conta->getCurriculo() == null) {
+                    echo "Adicone um Currículo com suas informações gerais!";
+                  }else{
+                    echo $conta->getCurriculo();
+                  }
+                  ?>
+                </span>
               </div>
             </li>
+            <?php
+              if($codConta != 0) {
+                if($conta->getTipo() == 'Empreendedor') {
+            ?>
             <li>
               <div class="collapsible-header"><i class="material-icons">create</i>Cadastrar empresa</div>
               <div class="collapsible-body">
@@ -50,13 +78,17 @@
                     <i class="fas fa-building large"></i>
                   </a>
                   <div id="btn-icon-emp">
-                    <a href="#" class="btn-large">
+                    <a href="#" class="btn-large orange darken-2">
                       Cadastrar
                     </a>
                   </div>
                 </div>
             </div>
             </li>
+            <?php
+                }
+              }
+            ?>
           </ul>
         </div>
       </div>

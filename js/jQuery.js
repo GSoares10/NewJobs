@@ -14,4 +14,5 @@ $(document).ready(function () {
   $('.tooltipped').tooltip();
   $('.scrollspy').scrollSpy();
   $('.collapsible').collapsible();
+  $('input#input_text, textarea#textarea2').characterCounter();
 });

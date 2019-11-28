@@ -51,8 +51,8 @@ CREATE TABLE "Endereco" (
 CREATE TABLE "Post" (
 	"codPost" serial,
 	"codConta" int NOT NULL,
-	"arquivo" varchar(150),
 	"descricao" varchar(200),
+	"arquivo" varchar(150),
 	CONSTRAINT "PostPK" PRIMARY KEY ("codPost"),
 	CONSTRAINT "PostContaFK" FOREIGN KEY ("codConta")
 		REFERENCES "Conta" ("codConta")

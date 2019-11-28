@@ -38,7 +38,7 @@
         </nav>
         <div class="row login">
             <div class="col s12 l4 offset-l4">
-                <form action="">
+                <form action="" method="POST">
                     <div class="card">
                         <div class="card-action center transparent text-darken-4 ">
                             <h2>Entrar</h2>
@@ -46,28 +46,28 @@
                         <div class="card-content">
                             <div class="input-field">
                                 <i class="material-icons prefix">email</i>
-                                <input id="email" type="email" class="validate">
+                                <input id="email" name="email" type="email" class="validate">
                                 <label for="email">Email</label>
                                 <span class="helper-text" data-error="wrong" data-success="correto"></span>
                             </div>
                             <div class="input-field">
                                 <i class="material-icons prefix">vpn_key</i>
-                                <input type="password" id="password">
-                                <label for="password">Senha</label>
+                                <input type="password" id="senha" name="senha">
+                                <label for="senha">Senha</label>
                             </div>
                             <p>
                                 <label>
-                                    <input type="checkbox" id="remember">
+                                    <input type="checkbox" id="remember" name="remember">
                                     <span>Lembre-me</span>
                                 </label>
                             </p>
                             <p>
                                 <label>
-                                    <a href="register.html" class="helper-text register-link">Cadastre-se.</a>
+                                    <a href="cadastroConta.php" class="helper-text register-link">Cadastre-se.</a>
                                 </label>
                             </p>
                             <div class="login-btn center">
-                                <a href="principal.php" class="btn-large indigo">Entrar</a>
+                                <a href="principal.php" class="orange darken-2 btn-large indigo" type="submit">Login</a>
                             </div>
                         </div>
                     </div>
