@@ -3,7 +3,7 @@
     //CONEXÃO
     private function getConexao() {
       $con = new PDO("pgsql:host=localhost;dbname=NewJobs;port=5432",
-      "postgres", "kgi11030319");
+      "postgres", "postgres");
       return $con;
     }
     //LISTA

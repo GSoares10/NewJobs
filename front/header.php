@@ -5,8 +5,7 @@
     require_once('php/postDAO.php');
 
     $contaDAO = new ContaDAO();
-    $codConta = 1;
-    $conta = $contaDAO->buscarConta($codConta);
+    $codConta = 1; // PARA TESTES, POIS NÃO SE TEM CONTROLE DE SESSÃO
 ?>
 
 
@@ -58,7 +57,7 @@
                 </div>
             </li>
             <li>
-                <a href="perfil.php">
+                <a href="perfil.php?codConta=<?php echo$conta->getCodConta(); ?>">
                     <i class="material-icons perfil">person</i>
                     <span class="text file">Perfil</span>
                 </a>
@@ -74,6 +73,16 @@
                     <i class="material-icons sair">arrow_forward</i>
                     <span class="text sair">Sair</span>
                 </a>
+            </li>
+            <li>
+                <a class='dropdown-trigger dropA' href='#' data-target='dropdown1'>
+                <i class="material-icons">settings_applications</i>
+                <span class="text file">Configurações</span>
+                </a>
+                <ul id='dropdown1' class='dropdown-content'>
+                    <li><a href="cadastroConta.php?codConta=<?php echo $conta->getCodConta();?>"><i class="material-icons">edit</i>Editar Perfil</a></li>
+                    <li><a href="excluirConta.php?codConta=<?php echo $conta->getCodConta();?>"><i class="material-icons">delete</i>Excluir Conta</a></li>
+                </ul>
             </li>
         </ul>
         <ul class="sidenav" id="mobile-menu">
@@ -119,6 +128,16 @@
                     <span class="text sair">Sair</span>
                 </a>
             </li>
+            <li>
+                <a class='dropdown-trigger dropA' href='#' data-target='dropdown2'>
+                <i class="material-icons">settings_applications</i>
+                <span class="text file">Configurações</span>
+                </a>
+                <ul id='dropdown2' class='dropdown-content'>
+                    <li><a href="cadastroConta.php?codConta=<?php echo $conta->getCodConta();?>"><i class="material-icons">edit</i>Editar Perfil</a></li>
+                    <li><a href="excluirConta.php?codConta=<?php echo $conta->getCodConta();?>"><i class="material-icons">delete</i>Excluir Conta</a></li>
+                </ul>
+            </li>
         </ul>
     </header>
     <main>
@@ -129,9 +148,40 @@
             </a>
             <ul class="pesquisa right">
                 <li>
-                    <a href="pesquisa.php">
+                    <a href="#modal1" class="modal-trigger tooltipped btn-large white-text transparent" data-tooltip="Pesquisar">
                         <i class="material-icons">search</i>
                     </a>
                 </li>
             </ul>
         </nav>
+        <div id="modal1" class="modal">
+            <div class="modal-content">
+            <h4>Pesquisa</h4>
+            <form action="pesquisa.php" method="POST">
+                <div class="card-content center">
+                    <div class="input-field col s8 offset-s2">
+                    <label for="pesquisa">Pesquisa
+                        <i class="material-icons right">search</i>
+                    </label>
+                    <input type="text" name="campoPesquisa">
+                    </div>
+                    <div class="input-field col s6 offset-s3">
+                    <select name="filtroPesquisa">
+                        <option value="" disabled selected>Todos</option>
+                        <option value="Usuário">Usuarios</option>
+                        <option value="Empreendedor">Empreendedores</option>
+                    </select>
+                    <label>Filtro</label>
+                    <button href="#" class="btn orange darken-2">
+                        <i class="material-icons">send</i>
+                    </button>
+                    </div>
+                </div>
+            </form>
+            </div>
+            <div class="modal-footer">
+            <a href="#!" class="modal-close waves-effect waves-red btn-flat">Fechar</a>
+            </div>
+        </div>
+
+        <script src="js/jQuery.js"></script>

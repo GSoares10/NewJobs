@@ -36,14 +36,14 @@ CREATE TABLE "Empresa" (
 
 CREATE TABLE "Endereco" (
 	"codEndereco" serial,
-	"codEmpresa" varchar(18) NOT NULL,
+	"cnpj" varchar(18) NOT NULL,
 	"rua" varchar(200) NOT NULL,
 	"bairro" varchar(200) NOT NULL,
 	"numero" char(10) NOT NULL,
 	"cidade" varchar(150) NOT NULL,
 	"pais" varchar(100) NOT NULL,
 	CONSTRAINT "EnderecoPK" PRIMARY KEY ("codEndereco"),
-	CONSTRAINT "EnderecoEmpresaFK" FOREIGN KEY ("codEmpresa") 
+	CONSTRAINT "EnderecoEmpresaFK" FOREIGN KEY ("cnpj") 
 		REFERENCES "Empresa"
 		ON UPDATE CASCADE ON DELETE CASCADE
 );
@@ -58,4 +58,3 @@ CREATE TABLE "Post" (
 		REFERENCES "Conta" ("codConta")
 		ON UPDATE CASCADE ON DELETE CASCADE
 );
-

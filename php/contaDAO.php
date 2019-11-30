@@ -3,7 +3,7 @@
     //CONEXÃO
     private function getConexao() {
       $con = new PDO("pgsql:host=localhost;dbname=NewJobs;port=5432",
-      "postgres", "kgi11030319");
+      "postgres", "postgres");
       return $con;
     }
     //LISTA
@@ -93,46 +93,54 @@
       $con = NULL;
       return $res;
     }
-    //ALTERA DADOS GENÉRICOS
-    public function alterarDadosGenericos($conta) {
+    //ALTERAR
+    public function alterarConta($conta) {
       $con = $this->getConexao();
-      $sql = 'UPDATE "Conta" SET "nome" = ?, "sexo" = ?, "dataNascimento" = ?, "telefone" = ?';
+      $sql = 'UPDATE "Conta" SET "nome"=?, "sexo"=?, "dataNascimento"=?, "telefone"=?, "tipo"=?, "email"=?, "senha"=?, "fotoCapa"=?, "foto"=?, "descricao"=?, "curriculo"=? WHERE "codConta"=?';
       $stm = $con->prepare($sql);
       $stm->bindValue(1, $conta->getNome());
       $stm->bindValue(2, $conta->getSexo());
-      $stm->bindValue(3, $conta->getDataNascimento());
+      $stm->bindValue(3, $conta->getDataNascimento()->format('Y-m-d'));
       $stm->bindValue(4, $conta->getTelefone());
+      $stm->bindValue(5, $conta->getTipo());
+      $stm->bindValue(6, $conta->getEmail());
+      $stm->bindValue(7, $conta->getSenha());
+      $stm->bindValue(8, $conta->getFotoCapa());
+      $stm->bindValue(9, $conta->getFoto());
+      $stm->bindValue(10, $conta->getDescricao());
+      $stm->bindValue(11, $conta->getCurriculo());
+      $stm->bindValue(12, $conta->getCodConta(),PDO::PARAM_INT);
       $res = $stm->execute();
-      if(!$res){
+      if(!$res) {
         echo $stm->queryString;
-        var_dump($stm->errorInfo());
+			  var_dump($stm->errorInfo());
       }
       $stm->closeCursor();
-      $stm = NULL;
-      $con = NULL;
-      return $res;
+		  $stm = NULL;
+		  $con = NULL;
+		  return $res;
     }
-    //LISTA AVANÇADA
-    public function listarAvancado($tipo, $limit, $offset) {
+    //PESQUISA
+    public function Pesquisa($pesquisa, $limit, $offset) {
       $con = $this->getConexao();
-      $sql = 'SELECT * FROM "Conta" WHERE "tipo" = ? LIMIT ? OFFSET ?';
+      $sql = 'SELECT * FROM "Conta" WHERE "nome" ILIKE ? LIMIT ? OFFSET ?';
       $stm = $con->prepare($sql);
-      $stm->bindValue(1, $tipo);
+      $stm->bindValue(1, $pesquisa);
       $stm->bindValue(2, $limit);
       $stm->bindValue(3, $offset);
       $res = $stm->execute();
-      $listAvancada = array();
+      $pesquisas = array();
       if($res) {
         while($linha = $stm->fetch(PDO::FETCH_ASSOC)) {
           $conta = new Conta($linha['nome'], $linha['sexo'], new DateTime($linha['dataNascimento']), $linha['telefone'], $linha['tipo'], $linha['email'], $linha['senha'], $linha['fotoCapa'], $linha['foto'], $linha['descricao'], $linha['curriculo']);
           $conta->setCodConta(intval($linha['codConta']));
-          array_push($listAvancada, $conta);
+          array_push($pesquisas, $conta);
         }
       }
       $stm->closeCursor();
       $stm = NULL;
       $con = NULL;
-      return $listAvancada;
+      return $pesquisas;
     }
   }
 ?>

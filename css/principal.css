@@ -74,6 +74,13 @@ header, main {
 #user-name {
     padding-top: 10px;
 }
+.select {
+    visibility: hidden;
+}
+.dropA {
+    margin: 0px 0px 0px 0px;
+    padding: 0px 0px 0px 0px;
+}
 @media screen and (max-width: 600px) {
     header, main {
         padding-left: 0px;

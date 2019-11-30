@@ -1,7 +1,13 @@
 <?php
     require_once('php/contaDAO.php');
     require_once('php/conta.class.php');
+    $codConta = isset($_GET['codConta']);
 
+    if($codConta){
+    $codConta = $_GET['codConta'];
+      $contaDAO = new ContaDAO();
+      $conta = $contaDAO->buscarConta(intval($codConta));
+    }
 ?>
 
 <!DOCTYPE html>
@@ -41,46 +47,44 @@
             <div class="col s12 l4 offset-l4">
                     <div class="card">
                         <div class="card-action center transparent text-darken-4">
-                        <h2>Cadastro</h2>
                             <div class="steps">
-                                <a href="#step-1" class="orange darken-2 btn btn-primary indigo">1</a>
+                                <a href="#step-1" class="btn btn-primary orange darken-2">1</a>
                             </div>
                             <div class="steps">
-                                <button href="#step-2" class="orange darken-2 btn btn-default indigo" disabled="disabled">2</a>
+                                <a href="#step-2" class="btn btn-default orange darken-2" disabled="disabled">2</a>
                             </div>
                             <div class="steps">
-                                <a href="#step-3" class="orange darken-2 btn btn-default indigo" disabled="disabled">3</a>
+                                <a href="#step-3" class="btn btn-default orange darken-2" disabled="disabled">3</a>
                             </div>
-                            
+                            <h2>Cadastro</h2>
                         </div>
                         <form action="cadastrarConta.php" method="POST">
                             <div class="card-content" id="step-1">
                                 <h3>Perfil</h3>
                                 <div class="input-field">
                                     <i class="material-icons prefix">person</i>
-                                    <input id="nome" type="text" name="nome" class="validate" required="required">
+                                    <input id="nome" type="text" name="nome" class="validate" required="required" value="<?php if($codConta) echo $conta->getNome();?>">
                                     <label for="nome">Nome</label>
                                     <span class="helper-text" data-error="wrong" data-success="right"></span>
                                 </div>
                                 <div class="input-field">
                                     <i class="material-icons prefix">person</i>
-                                    <select name="sexo" type="text">
+                                    <select name="sexo" type="text" value="<?php if($codConta) echo $conta->getSexo();?>">
                                         <option value="" disabled selected>Escolha sua opção...</option>
                                         <option value="Feminino">Feminino</option>
                                         <option value="Masculino">Masculino</option>
-                                        <option value="Outro">Outro...</option>
                                     </select>
                                     <label>Sexo</label>
                                 </div>
                                 <div class="input-field">
                                     <i class="material-icons prefix">today</i>
-                                    <input type="date" id="dataNascimento" name="dataNascimento" class="validate" required="required">
+                                    <input type="date" id="dataNascimento" name="dataNascimento" class="validate" required="required" value="<?php if($codConta) echo $conta->getDataNascimento()->format('Y-m-d');?>">
                                     <label for="dataNascimento">Data Nasc.</label>
                                     <span class="helper-text" data-error="wrong" data-success="right"></span>
                                 </div>
                                 <div class="input-field">
                                     <i class="material-icons prefix">phone</i>
-                                    <input type="text" id="telefone" name="telefone" class="validate" required="required" maxlength="11" pattern="([0-9]{11})">
+                                    <input type="text" id="telefone" name="telefone" class="validate" required="required" maxlength="11" pattern="([0-9]{11})" value="<?php if($codConta) echo $conta->getTelefone();?>">
                                     <label for="telefone">Telefone</label>
                                     <span class="helper-text" data-error="wrong" data-success="right"></span>
                                 </div>
@@ -99,25 +103,25 @@
                                     </p>
                                 </div>
                                 <button
-                                    class="orange darken-2 btn btn-primary nextBtn waves-effect waves-light btn-large z-depth-5 right indigo"
+                                    class="btn btn-primary nextBtn waves-effect waves-light btn-large z-depth-5 right orange darken-2"
                                     type="button">Próximo</button>
                             </div>
                             <div class="card-content" id="step-2">
                                 <h3>Dados</h3>
                                 <div class="input-field">
                                     <i class="material-icons prefix">email</i>
-                                    <input id="email" name="email" type="email" class="validate" required="required">
+                                    <input id="email" name="email" type="email" class="validate" required="required" value="<?php if($codConta) echo $conta->getEmail();?>">
                                     <label for="email">Email</label>
                                     <span class="helper-text" data-error="wrong" data-success="right"></span>
                                 </div>
                                 <div class="input-field">
                                     <i class="material-icons prefix">vpn_key</i>
-                                    <input type="password" id="senha" name="senha" required="required">
+                                    <input type="password" id="senha" name="senha" required="required" value="<?php if($codConta) echo $conta->getSenha();?>">
                                     <label for="senha">Senha</label>
                                 </div>
-                                <button class="orange darken-2 btn btn-primary prevBtn waves-effect waves-light btn-large z-depth-5 indigo"
+                                <button class="btn btn-primary prevBtn waves-effect waves-light btn-large z-depth-5 orange darken-2"
                                     type="button">Voltar</button>
-                                <button class="orange darken-2 btn btn-primary nextBtn waves-effect waves-light btn-large z-depth-5 indigo"
+                                <button class="btn btn-primary nextBtn waves-effect waves-light btn-large z-depth-5 orange darken-2"
                                     type="button">Próximo</button>
                             </div>
                             <div class="card-content" id="step-3">
@@ -126,32 +130,36 @@
                                 <div class="file-field">
                                     <a class="btn"><i class="material-icons">image</i></a>
                                     <div class="file-path-wrapper">
-                                        <input type="text" id="fotoCapa" name="fotoCapa" class="file-path validate">
+                                        <input type="text" id="fotoCapa" name="fotoCapa" class="file-path validate" value="<?php if($codConta) echo $conta->getFotoCapa();?>">
                                     </div>
                                 </div>
                                 <label>Foto</label>
                                 <div class="file-field">
                                     <a class="btn"><i class="material-icons">image</i></a>
                                     <div class="file-path-wrapper">
-                                        <input type="text" id="foto" name="foto" class="file-path validate">
+                                        <input type="text" id="foto" name="foto" class="file-path validate" value="<?php if($codConta) echo $conta->getFoto();?>">
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="input-field col s12">
-                                        <textarea id="textarea" id="descricao" name="descricao" class="materialize-textarea"></textarea>
+                                        <textarea id="textarea" id="descricao" name="descricao" class="materialize-textarea" value="<?php if($codConta) echo $conta->getDescricao();?>"></textarea>
                                         <label for="textarea">Descrição</label>
                                     </div>
                                 </div>
                                 <label>Currículo</label>
                                 <div class="file-field">
-                                    <button class="btn"><i class="material-icons">attachment</i></button>
+                                    <a class="btn"><i class="material-icons">attachment</i></a>
                                     <div class="file-path-wrapper">
-                                        <input type="text" id="curriculo" name="curriculo" class="file-path validate">
+                                        <input type="text" id="curriculo" name="curriculo" class="file-path validate" value="<?php if($codConta) echo $conta->getCurriculo();?>">
                                     </div>
                                 </div>
-                                <button class="orange darken-2 btn btn-primary prevBtn waves-effect waves-light btn-large z-depth-5 indigo">Voltar</button>
+                                <?php if($codConta) {?>
+                                    <input type="hidden" name="codConta" value="<?php echo $conta->getCodConta();?>">
+                                <?php }?>
+                                <button class="btn btn-primary prevBtn waves-effect waves-light btn-large z-depth-5 orange darken-2"
+                                    type="button">Voltar</button>
                                 <button
-                                    class="orange darken-2 btn btn-primary nextBtn waves-effect waves-light btn-large z-depth-5 right indigo">Enviar</button>
+                                    class="btn btn-primary nextBtn waves-effect waves-light btn-large z-depth-5 right orange darken-2" type="submit">Enviar</button>
                             </div>
                         </form>
                     </div>

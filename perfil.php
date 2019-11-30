@@ -1,5 +1,12 @@
 <?php
     require_once('front/header.php');
+    $codConta = $_GET['codConta'];
+
+    if($codConta != 0){
+      $codConta = $_GET['codConta'];
+      $contaDAO = new ContaDAO();
+      $conta = $contaDAO->buscarConta(intval($codConta));
+    }
 ?>
 
 

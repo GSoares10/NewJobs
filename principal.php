@@ -23,7 +23,7 @@
             <div class="col s12 l10 post-to-pub offset-l1">
                 <div class="card">
                     <form action="cadastrarPost.php" method="POST">
-                        <div class="col s12">
+                        <div class="col s12 select">
                             <select name="codConta">
                                 <option value="<?= $conta->getCodConta(); ?>">
                                     <?php echo $conta->getNome()." (".$conta->getCodConta().")"; ?>
